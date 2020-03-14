@@ -1,39 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import { Menu, Dropdown } from 'antd';
 import {DownOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import {IsLogin, GetUser, Logout } from "./UserService";
+import PropTypes from 'prop-types'
+import {GetUser } from "./UserService";
 
 export default class MenuLayout extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'login': IsLogin(),
-            'showed': false,
-        };
-    }
-
-    componentDidMount() {
-        this.setState({
-            login: IsLogin(),
-        });
-    }
-
-    handleLogout()
-    {
-        Logout();
-        this.setState({
-            login: IsLogin(),
-        });
+    //声明属性
+    static propTypes = {
+        login:  PropTypes.bool.isRequired,
     }
 
     render() {
-        const isLogin = this.state.login;
+        const login = this.props.login;
         let loginTxt;
 
-        if(!isLogin) {
+        if(!login) {
                 loginTxt = (
                 <Menu.Item key="3">
 
@@ -46,7 +29,7 @@ export default class MenuLayout extends React.Component {
                         <Link to="/settings">设置</Link>
                     </Menu.Item>
                     <Menu.Item>
-                        <Link to="/logout" onClick={() => this.handleLogout()}>退出</Link>
+                        <Link to="/logout">退出</Link>
                     </Menu.Item>
                 </Menu>
             );
@@ -67,7 +50,7 @@ export default class MenuLayout extends React.Component {
             <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
+            defaultSelectedKeys={['1']}
             style={{ lineHeight: '64px', textAlign:'right'}}
           >
         <Menu.Item key="1"><span>菜单1</span></Menu.Item>

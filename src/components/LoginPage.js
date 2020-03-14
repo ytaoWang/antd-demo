@@ -2,21 +2,27 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../styles/Login.css';
 import { Form, Input, Button, Checkbox } from 'antd';
-import {Auth, IsLogin} from "./UserService";
+import {Auth} from "./UserService";
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 
 export default class LoginPage extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      'login': IsLogin(),
-    };
+   //声明属性
+   static propTypes = {
+        onLogin: PropTypes.func.isRequired,
+        login: PropTypes.bool.isRequired
+    }
+
+  componentDidMount() {
+    const onLogin = this.props.onLogin;
+    onLogin(false);
   }
 
   render() {
     console.log("loginpage-render-0");
+    const onLogin = this.props.onLogin;
+    const login = this.props.login;
     const layout = {
       labelCol: {
         span: 8,
@@ -37,7 +43,7 @@ export default class LoginPage extends React.Component {
         console.log('Success:', values);
         if(Auth(values.username, values.password, values.remember))
         {
-          this.setState({'login':IsLogin()});
+          onLogin(true);
         }
       };
     
@@ -45,9 +51,8 @@ export default class LoginPage extends React.Component {
         console.log('Failed:', errorInfo);
       };
       console.log("loginpage-render-2");
-      if(this.state.login) {
+      if(login) {
         return (<Redirect to='/main'/>);
-
       } else
       {
     return (
@@ -97,7 +102,7 @@ export default class LoginPage extends React.Component {
               </Form.Item>
             </Form>
           );
-              }
+      }
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'; 
 import Dashboard from "./components/Dashboard";
 
-import LoginPage from "./components/LoginPage";
+import LoginPageContainer from "./containers/LoginPageContainer";
 import LogoutPage from "./components/LogoutPage"
 import MainPage from './components/MainPage';
 
@@ -16,7 +16,7 @@ function App() {
             <Redirect to="http://www.baidu.com"/>
           </Route>
           <Dashboard path="/settings" component={MainPage} />
-          <Dashboard path="/login" component={LoginPage} />
+          <Dashboard path="/login" component={LoginPageContainer} />
           <Dashboard path="/logout" component={LogoutPage} />
           <Dashboard path="/" component={MainPage} />
         </Switch>
