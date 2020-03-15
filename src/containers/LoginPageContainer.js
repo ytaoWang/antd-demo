@@ -30,6 +30,6 @@ const mapDispatchProps = (dispatch, ownProps) => {
     };
 };
 
-const LoginPageContainer = connect(mapStateToProps, mapDispatchProps)(LoginPage);
+const LoginPageContainer = connect(null, mapDispatchProps)(LoginPage);
 
 export default LoginPageContainer;
