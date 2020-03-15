@@ -1,7 +1,7 @@
 import {LOGIN, LOGOUT, MENU_1} from './actions';
 import {combineReducers} from 'redux';
 
-function rxHandleUser(state='initRedux', action) {
+function rxHandleUser(state=false, action) {
     switch(action.type) {
         case LOGIN:
             if(typeof state === 'undefined') {
@@ -19,7 +19,7 @@ function rxHandleUser(state='initRedux', action) {
 }
 
 
-function rxHandleMenu(state='initRedux', action)
+function rxHandleMenu(state=false, action)
 {
     switch(action.type) {
         case MENU_1:

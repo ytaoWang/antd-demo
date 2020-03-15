@@ -28,6 +28,7 @@ const DashboardLayout = ({children, ...rest}) => {
 
 
 const Dashboard = ({component: Component, ...rest}) => {  
+  console.log("rest:" + rest);
     return (  
       <Route {...rest} render={matchProps => (  
         <DashboardLayout> 

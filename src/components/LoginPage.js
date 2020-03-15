@@ -50,7 +50,7 @@ export default class LoginPage extends React.Component {
       const onFinishFailed = errorInfo => {
         console.log('Failed:', errorInfo);
       };
-      console.log("loginpage-render-2");
+      console.log("loginpage-render-2,login:" + login);
       if(login) {
         return (<Redirect to='/main'/>);
       } else
