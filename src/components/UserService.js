@@ -13,7 +13,7 @@ function GetUser()
 async function Auth(user, pwd, remember)
 {
     const token = "abcdef0123456";
-    return await request.post('http://localhost:8080/signin/',
+    return await request.post('signin/',
     {
         user: user,
         pwd: pwd,

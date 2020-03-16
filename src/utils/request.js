@@ -2,7 +2,7 @@ import axios from 'axios';
 import {IsLogin, GetToken} from '../components/UserService';
 
 const service = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'http://localhost:8080/',
     timeout: 5000
 });
 
