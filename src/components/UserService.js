@@ -1,4 +1,4 @@
-import axios from 'axios';
+import request from '../utils/request'
 
 function IsLogin()
 {
@@ -13,15 +13,15 @@ function GetUser()
 async function Auth(user, pwd, remember)
 {
     const token = "abcdef0123456";
-    return await axios.post('http://localhost:8080/signin/',
+    return await request.post('http://localhost:8080/signin/',
     {
         user: user,
         pwd: pwd,
     }).then(res=>{
         let ret = false;
         console.log(res);
-        ret = res.data === 'ok';
-        console.log(res.data + ',ret:' + ret);
+        ret = res === 'ok';
+        console.log(res + ',ret:' + ret);
         if(ret) {
             localStorage.setItem("token", token);
             localStorage.setItem("user", user);
